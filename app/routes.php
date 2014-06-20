@@ -93,14 +93,29 @@ Route::get('certifications/user/add/{id}', array('as' => 'make_user_certShow', '
 Route::post('certifications/user/add', array('as' => 'make_user_cert', 'uses' => 'CertController@make_user_certDo'));
 
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//EXPORTS//EXPO//EXPORTS//EXPORTS//EXPORTS//EXPORTSRTS//EXPORTS//EXPORTS//EXPORTS//EXPORTS
+//++++++++++++++++++++++++++++++++++++++++++
 
+Route::get('users/export/excel/shirts', function(){
+return
 
+Excel::create('Shirts', function($excel) {
+	
+    $excel->sheet('Shirt Sizes', function($sheet) {
+$shirtmodel = CertMain::get();
+$sheet->fromModel($shirtmodel, null, 'A1', false, false);
+        $sheet->setOrientation('landscape');
 
+    });
 
-
-
-
-
+})->export('xls');});
 
 
 
